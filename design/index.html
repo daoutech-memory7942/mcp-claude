@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Component Guide</title>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <div class="app-container">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <h1>Component Guide</h1>
+      </div>
+      <nav class="sidebar-nav">
+        <a href="#button" class="nav-item active" data-component="button">Button</a>
+        <a href="#input" class="nav-item" data-component="input">Input</a>
+        <a href="#search" class="nav-item" data-component="search">Search</a>
+        <a href="#checkbox" class="nav-item" data-component="checkbox">Checkbox</a>
+        <a href="#select" class="nav-item" data-component="select">Select</a>
+        <a href="#dropdown" class="nav-item" data-component="dropdown">Dropdown</a>
+        <a href="#toggle" class="nav-item" data-component="toggle">Toggle</a>
+        <a href="#toast" class="nav-item" data-component="toast">Toast</a>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <!-- Button Component -->
+      <section id="button" class="component-section active">
+        <h2 class="component-title">Button</h2>
+        <p class="component-description">버튼 컴포넌트는 다양한 타입과 상태를 지원합니다.</p>
+
+        <div class="example-group">
+          <h3 class="example-title">Types</h3>
+          <div class="example-container">
+            <button class="btn btn-primary">Primary</button>
+            <button class="btn btn-secondary">Secondary</button>
+            <button class="btn btn-normal">Normal</button>
+            <button class="btn btn-ghost">Ghost</button>
+          </div>
+        </div>
+
+        <div class="code-block">
+          <pre><code>&lt;button className="btn btn-primary"&gt;Primary&lt;/button&gt;
+&lt;button className="btn btn-secondary"&gt;Secondary&lt;/button&gt;
+&lt;button className="btn btn-normal"&gt;Normal&lt;/button&gt;
+&lt;button className="btn btn-ghost"&gt;Ghost&lt;/button&gt;</code></pre>
+        </div>
+      </section>
+
+      <!-- Input Component -->
+      <section id="input" class="component-section">
+        <h2 class="component-title">Input</h2>
+        <p class="component-description">텍스트 입력 컴포넌트입니다.</p>
+
+        <div class="example-group">
+          <h3 class="example-title">States</h3>
+          <div class="example-container vertical">
+            <div class="input-wrapper">
+              <input type="text" class="input" placeholder="텍스트를 입력해주세요." />
+            </div>
+            <div class="input-wrapper">
+              <input type="text" class="input input-focused" placeholder="텍스트를 입력해주세요." />
+            </div>
+            <div class="input-wrapper">
+              <input type="text" class="input input-error" placeholder="텍스트를 입력해주세요." />
+              <p class="error-message">오류 메시지입니다.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="code-block">
+          <pre><code>&lt;input type="text" className="input" placeholder="텍스트를 입력해주세요." /&gt;
+&lt;input type="text" className="input input-error" placeholder="텍스트를 입력해주세요." /&gt;</code></pre>
+        </div>
+      </section>
+
+      <!-- Search Component -->
+      <section id="search" class="component-section">
+        <h2 class="component-title">Search</h2>
+        <p class="component-description">검색 입력 컴포넌트입니다.</p>
+
+        <div class="example-group">
+          <h3 class="example-title">Default</h3>
+          <div class="example-container">
+            <div class="search-box">
+              <svg class="search-icon" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M7.33333 12.6667C10.2789 12.6667 12.6667 10.2789 12.6667 7.33333C12.6667 4.38781 10.2789 2 7.33333 2C4.38781 2 2 4.38781 2 7.33333C2 10.2789 4.38781 12.6667 7.33333 12.6667Z" stroke="#A7B9CC" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M14 14L11.1 11.1" stroke="#A7B9CC" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              <p class="search-placeholder">검색어를 입력해주세요.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="code-block">
+          <pre><code>&lt;div className="search-box"&gt;
+  &lt;svg className="search-icon"&gt;...&lt;/svg&gt;
+  &lt;p className="search-placeholder"&gt;검색어를 입력해주세요.&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+        </div>
+      </section>
+
+      <!-- Checkbox Component -->
+      <section id="checkbox" class="component-section">
+        <h2 class="component-title">Checkbox</h2>
+        <p class="component-description">체크박스 컴포넌트입니다.</p>
+
+        <div class="example-group">
+          <h3 class="example-title">States</h3>
+          <div class="example-container vertical">
+            <label class="checkbox-label">
+              <div class="checkbox-box">
+                <input type="checkbox" class="checkbox-input" />
+              </div>
+              <span class="checkbox-text">체크박스</span>
+            </label>
+            <label class="checkbox-label">
+              <div class="checkbox-box checked">
+                <input type="checkbox" class="checkbox-input" checked />
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M2 6L5 9L10 3" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <span class="checkbox-text">체크박스</span>
+            </label>
+            <label class="checkbox-label disabled">
+              <div class="checkbox-box disabled">
+                <input type="checkbox" class="checkbox-input" disabled />
+              </div>
+              <span class="checkbox-text">체크박스</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="code-block">
+          <pre><code>&lt;label className="checkbox-label"&gt;
+  &lt;input type="checkbox" className="checkbox-input" /&gt;
+  &lt;span className="checkbox-text"&gt;체크박스&lt;/span&gt;
+&lt;/label&gt;</code></pre>
+        </div>
+      </section>
+
+      <!-- Select Component -->
+      <section id="select" class="component-section">
+        <h2 class="component-title">Select</h2>
+        <p class="component-description">드롭다운 선택 컴포넌트입니다.</p>
+
+        <div class="example-group">
+          <h3 class="example-title">Default</h3>
+          <div class="example-container">
+            <div class="select-box">
+              <span class="select-value">선택하세요</span>
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M4 6L8 10L12 6" stroke="#172B4D" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+
+        <div class="code-block">
+          <pre><code>&lt;select className="select-box"&gt;
+  &lt;option&gt;선택하세요&lt;/option&gt;
+&lt;/select&gt;</code></pre>
+        </div>
+      </section>
+
+      <!-- Dropdown Component -->
+      <section id="dropdown" class="component-section">
+        <h2 class="component-title">Dropdown</h2>
+        <p class="component-description">드롭다운 메뉴 컴포넌트입니다.</p>
+
+        <div class="example-group">
+          <h3 class="example-title">Default</h3>
+          <div class="example-container">
+            <div class="dropdown-container">
+              <button class="dropdown-trigger">Dropdown</button>
+              <div class="dropdown-menu">
+                <a href="#" class="dropdown-item">Menu Item 1</a>
+                <a href="#" class="dropdown-item">Menu Item 2</a>
+                <a href="#" class="dropdown-item">Menu Item 3</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="code-block">
+          <pre><code>&lt;div className="dropdown-container"&gt;
+  &lt;button className="dropdown-trigger"&gt;Dropdown&lt;/button&gt;
+  &lt;div className="dropdown-menu"&gt;
+    &lt;a href="#" className="dropdown-item"&gt;Menu Item 1&lt;/a&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+        </div>
+      </section>
+
+      <!-- Toggle Component -->
+      <section id="toggle" class="component-section">
+        <h2 class="component-title">Toggle</h2>
+        <p class="component-description">토글 스위치 컴포넌트입니다.</p>
+
+        <div class="example-group">
+          <h3 class="example-title">States</h3>
+          <div class="example-container">
+            <label class="toggle-label">
+              <input type="checkbox" class="toggle-input" />
+              <span class="toggle-slider"></span>
+            </label>
+            <label class="toggle-label">
+              <input type="checkbox" class="toggle-input" checked />
+              <span class="toggle-slider checked"></span>
+            </label>
+          </div>
+        </div>
+
+        <div class="code-block">
+          <pre><code>&lt;label className="toggle-label"&gt;
+  &lt;input type="checkbox" className="toggle-input" /&gt;
+  &lt;span className="toggle-slider"&gt;&lt;/span&gt;
+&lt;/label&gt;</code></pre>
+        </div>
+      </section>
+
+      <!-- Toast Component -->
+      <section id="toast" class="component-section">
+        <h2 class="component-title">Toast</h2>
+        <p class="component-description">토스트 알림 컴포넌트입니다.</p>
+
+        <div class="example-group">
+          <h3 class="example-title">Types</h3>
+          <div class="example-container vertical">
+            <div class="toast toast-success">
+              <span class="toast-icon">✓</span>
+              <span class="toast-message">성공 메시지입니다.</span>
+            </div>
+            <div class="toast toast-error">
+              <span class="toast-icon">✕</span>
+              <span class="toast-message">오류 메시지입니다.</span>
+            </div>
+            <div class="toast toast-info">
+              <span class="toast-icon">ⓘ</span>
+              <span class="toast-message">정보 메시지입니다.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="code-block">
+          <pre><code>&lt;div className="toast toast-success"&gt;
+  &lt;span className="toast-icon"&gt;✓&lt;/span&gt;
+  &lt;span className="toast-message"&gt;성공 메시지입니다.&lt;/span&gt;
+&lt;/div&gt;</code></pre>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="./script.js"></script>
+</body>
+</html>
