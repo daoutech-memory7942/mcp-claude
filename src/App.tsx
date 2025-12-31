@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
 import Button from './components/Button'
 import Toggle from './components/Toggle'
 import Input from './components/Input'
@@ -8,11 +9,10 @@ import Search from './components/Search'
 import Dropdown from './components/Dropdown'
 import Toast from './components/Toast'
 import Dialog from './components/Dialog'
-import Dashboard from './components/Dashboard'
-import CheckoutForm from './components/CheckoutForm'
+import DashboardPage from './pages/DashboardPage'
+import AddCalendarPage from './pages/AddCalendarPage'
 
-function App() {
-  const [currentView, setCurrentView] = useState<'dashboard' | 'checkout' | 'components'>('checkout')
+function ComponentsDemo() {
   const [toggle1, setToggle1] = useState(false)
   const [toggle2, setToggle2] = useState(true)
   const [inputValue, setInputValue] = useState('')
@@ -28,14 +28,6 @@ function App() {
   const [columnSelection, setColumnSelection] = useState<string[]>([])
   const [filterSelection, setFilterSelection] = useState<string[]>([])
 
-  if (currentView === 'dashboard') {
-    return <Dashboard />
-  }
-
-  if (currentView === 'checkout') {
-    return <CheckoutForm />
-  }
-
   return (
     <div className="min-h-screen bg-gray-50 p-8">
       <div className="max-w-4xl mx-auto space-y-8">
@@ -48,15 +40,15 @@ function App() {
             All components from Figma design with complete variants
           </p>
           <div className="mt-4 flex gap-4">
-            <Button type="primary" onClick={() => setCurrentView('dashboard')}>
-              View Dashboard
-            </Button>
-            <Button type="primary" onClick={() => setCurrentView('checkout')}>
-              View Checkout Form
-            </Button>
-            <Button type="normal" onClick={() => setCurrentView('components')}>
-              View Components
-            </Button>
+            <Link to="/dashboard">
+              <Button type="primary">View Dashboard</Button>
+            </Link>
+            <Link to="/add-calendar">
+              <Button type="primary">View Add Calendar</Button>
+            </Link>
+            <Link to="/">
+              <Button type="normal">View Components</Button>
+            </Link>
           </div>
         </div>
 
@@ -785,6 +777,18 @@ function App() {
         </div>
       </div>
     </div>
+  )
+}
+
+function App() {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<ComponentsDemo />} />
+        <Route path="/dashboard" element={<DashboardPage />} />
+        <Route path="/add-calendar" element={<AddCalendarPage />} />
+      </Routes>
+    </BrowserRouter>
   )
 }
 

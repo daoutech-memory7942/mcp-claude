@@ -54,7 +54,7 @@ export default function Button({
       return 'text-light-primary-500';
     }
 
-    return 'text-light-gray-900';
+    return 'text-[#2f353c]';
   };
 
   return (
@@ -64,7 +64,7 @@ export default function Button({
         h-8
         px-3
         rounded-md
-        font-medium text-sm
+        font-['Pretendard:Medium',sans-serif] text-sm
         leading-[1.6]
         transition-colors
         ${getBackgroundClasses()}
