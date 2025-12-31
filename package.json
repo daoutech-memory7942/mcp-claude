@@ -7,7 +7,10 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "tokens:parse": "node scripts/parse-tokens.js",
+    "tokens:watch": "node scripts/watch-tokens.js",
+    "tokens:generate": "node scripts/generate-tokens-css.js"
   },
   "dependencies": {
     "react": "^19.2.0",
