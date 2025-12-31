@@ -8,8 +8,11 @@ import Search from './components/Search'
 import Dropdown from './components/Dropdown'
 import Toast from './components/Toast'
 import Dialog from './components/Dialog'
+import Dashboard from './components/Dashboard'
+import CheckoutForm from './components/CheckoutForm'
 
 function App() {
+  const [currentView, setCurrentView] = useState<'dashboard' | 'checkout' | 'components'>('checkout')
   const [toggle1, setToggle1] = useState(false)
   const [toggle2, setToggle2] = useState(true)
   const [inputValue, setInputValue] = useState('')
@@ -25,6 +28,14 @@ function App() {
   const [columnSelection, setColumnSelection] = useState<string[]>([])
   const [filterSelection, setFilterSelection] = useState<string[]>([])
 
+  if (currentView === 'dashboard') {
+    return <Dashboard />
+  }
+
+  if (currentView === 'checkout') {
+    return <CheckoutForm />
+  }
+
   return (
     <div className="min-h-screen bg-gray-50 p-8">
       <div className="max-w-4xl mx-auto space-y-8">
@@ -36,6 +47,17 @@ function App() {
           <p className="text-gray-600">
             All components from Figma design with complete variants
           </p>
+          <div className="mt-4 flex gap-4">
+            <Button type="primary" onClick={() => setCurrentView('dashboard')}>
+              View Dashboard
+            </Button>
+            <Button type="primary" onClick={() => setCurrentView('checkout')}>
+              View Checkout Form
+            </Button>
+            <Button type="normal" onClick={() => setCurrentView('components')}>
+              View Components
+            </Button>
+          </div>
         </div>
 
         {/* Button Component */}
