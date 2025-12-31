@@ -39,10 +39,11 @@
   --color-green-600: #03b552;
   --color-blue-500: #0d6efc;
 
-  /* Semantic Tokens */
+  /* Semantic Tokens - Light Mode */
   --color-bg-neutral-base: #ffffff;
   --color-bg-neutral-surface: #ffffff;
   --color-bg-neutral-surface-hover: #e6edf5;
+  --color-bg-page: #f8f9fa;
   --color-border-neutral-level1: #c9d6e0;
   --color-border-neutral-level1-hover: #a8bacc;
   --color-border-status-negative: #dc3545;
@@ -58,12 +59,28 @@
   --sidebar-width: 240px;
 }
 
+/* Dark Mode */
+body.dark-mode {
+  --color-bg-neutral-base: #1a1d23;
+  --color-bg-neutral-surface: #22262e;
+  --color-bg-neutral-surface-hover: #2d3139;
+  --color-bg-page: #14171c;
+  --color-border-neutral-level1: #373d47;
+  --color-border-neutral-level1-hover: #4a515c;
+  --color-text-neutral-base: #e8eaed;
+  --color-text-neutral-disabled: #6b7280;
+  --color-control-bg-normal: #22262e;
+  --color-control-border-level1: #373d47;
+  --color-control-border-level1-hover: #4a515c;
+}
+
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: var(--color-text-neutral-base);
-  background-color: var(--color-light-gray-100);
+  background-color: var(--color-bg-page);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* Layout */
@@ -82,6 +99,8 @@ body {
   top: 0;
   bottom: 0;
   overflow-y: auto;
+  display: flex;
+  flex-direction: column;
 }
 
 .sidebar-header {
@@ -96,7 +115,9 @@ body {
 }
 
 .sidebar-nav {
-  padding: 16px 0;
+  padding: 16px 0 80px 0;
+  flex: 1;
+  overflow-y: auto;
 }
 
 .nav-item {
@@ -120,6 +141,34 @@ body {
   color: var(--color-light-primary-500);
   font-weight: 500;
   border-right: 2px solid var(--color-light-primary-500);
+}
+
+/* Sidebar Footer */
+.sidebar-footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 16px 20px;
+  border-top: 2px solid var(--color-border-neutral-level1);
+  background-color: var(--color-bg-neutral-surface);
+}
+
+.theme-toggle-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.theme-toggle-label {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-text-neutral-base);
+}
+
+.theme-toggle {
+  flex-shrink: 0;
 }
 
 /* Main Content */
@@ -183,7 +232,7 @@ body {
 
 /* Code Block */
 .code-block {
-  background-color: var(--color-light-gray-100);
+  background-color: var(--color-bg-neutral-surface-hover);
   border: 1px solid var(--color-border-neutral-level1);
   border-radius: 6px;
   padding: 16px;

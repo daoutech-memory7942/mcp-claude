@@ -1,5 +1,34 @@
 // Navigation functionality
 document.addEventListener('DOMContentLoaded', () => {
+  // Theme toggle functionality
+  const themeToggleInput = document.getElementById('theme-toggle-input');
+  const themeToggleSlider = document.querySelector('.theme-toggle .toggle-slider');
+
+  // Load saved theme preference or default to light mode
+  const savedTheme = localStorage.getItem('theme') || 'light';
+  if (savedTheme === 'dark') {
+    document.body.classList.add('dark-mode');
+    if (themeToggleInput) {
+      themeToggleInput.checked = true;
+      themeToggleSlider?.classList.add('checked');
+    }
+  }
+
+  // Theme toggle handler
+  if (themeToggleInput && themeToggleSlider) {
+    themeToggleInput.addEventListener('change', () => {
+      if (themeToggleInput.checked) {
+        document.body.classList.add('dark-mode');
+        themeToggleSlider.classList.add('checked');
+        localStorage.setItem('theme', 'dark');
+      } else {
+        document.body.classList.remove('dark-mode');
+        themeToggleSlider.classList.remove('checked');
+        localStorage.setItem('theme', 'light');
+      }
+    });
+  }
+
   const navItems = document.querySelectorAll('.nav-item');
   const sections = document.querySelectorAll('.component-section');
 

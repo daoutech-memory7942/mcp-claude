@@ -7,6 +7,7 @@ import Checkbox from './components/Checkbox'
 import Search from './components/Search'
 import Dropdown from './components/Dropdown'
 import Toast from './components/Toast'
+import Dialog from './components/Dialog'
 
 function App() {
   const [toggle1, setToggle1] = useState(false)
@@ -590,6 +591,50 @@ function App() {
                 <p className="text-sm text-gray-600">
                   In a production app, these buttons would trigger toast notifications that appear temporarily.
                 </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Dialog Component */}
+        <div className="bg-white rounded-lg shadow-lg p-8">
+          <h2 className="text-2xl font-bold text-gray-800 mb-6">Dialog Component</h2>
+          <div className="space-y-6">
+            {/* Default Dialog */}
+            <div>
+              <h3 className="text-lg font-semibold text-gray-800 mb-4">Default Dialog</h3>
+              <div className="max-w-md">
+                <Dialog />
+              </div>
+            </div>
+
+            {/* Custom Dialog */}
+            <div>
+              <h3 className="text-lg font-semibold text-gray-800 mb-4">Custom Dialog</h3>
+              <div className="max-w-md">
+                <Dialog
+                  title="프로젝트 삭제"
+                  description="정말로 이 프로젝트를 삭제하시겠습니까?"
+                  cancelText="아니오"
+                  confirmText="예, 삭제합니다"
+                  onCancel={() => console.log('Cancelled')}
+                  onConfirm={() => console.log('Confirmed')}
+                />
+              </div>
+            </div>
+
+            {/* Interactive Dialog */}
+            <div>
+              <h3 className="text-lg font-semibold text-gray-800 mb-4">Interactive Dialog</h3>
+              <div className="max-w-md">
+                <Dialog
+                  title="사용자 초대"
+                  description="초대할 사용자를 검색해주세요."
+                  cancelText="취소"
+                  confirmText="초대하기"
+                  onCancel={() => alert('Dialog cancelled')}
+                  onConfirm={() => alert('Dialog confirmed')}
+                />
               </div>
             </div>
           </div>
