@@ -1,5 +1,5 @@
-import { ReactNode } from 'react';
-import { DashboardProvider, UserProfile, MenuItem, StatsData, NewsData } from './DashboardContext';
+import { type ReactNode } from 'react';
+import { DashboardProvider, type UserProfile, type MenuItem, type StatsData, type NewsData } from './DashboardContext';
 
 interface DashboardProps {
   children: ReactNode;

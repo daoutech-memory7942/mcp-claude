@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import Search from './Search';
 import Checkbox from './Checkbox';
 
 export type DropdownOption = {

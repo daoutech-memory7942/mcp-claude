@@ -1,4 +1,4 @@
-import { useState, InputHTMLAttributes } from 'react';
+import { useState, type InputHTMLAttributes } from 'react';
 
 type CheckboxProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'type' | 'className'> & {
   label?: string | React.ReactNode;

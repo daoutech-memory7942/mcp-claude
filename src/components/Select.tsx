@@ -1,4 +1,4 @@
-import { forwardRef, SelectHTMLAttributes, useState } from 'react';
+import { forwardRef, type SelectHTMLAttributes, useState } from 'react';
 
 type SelectOption = {
   value: string;

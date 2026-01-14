@@ -1,4 +1,4 @@
-import { useState, forwardRef, InputHTMLAttributes } from 'react';
+import { useState, forwardRef, type InputHTMLAttributes } from 'react';
 
 type InputProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'className'> & {
   error?: boolean;

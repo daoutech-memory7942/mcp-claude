@@ -1,4 +1,7 @@
-import { Dashboard, Sidebar, Content, type MenuItem, type StatsData, type NewsData, type UserProfile } from '../components/Dashboard';
+import Dashboard from '../components/Dashboard/Dashboard';
+import Sidebar from '../components/Dashboard/Sidebar';
+import Content from '../components/Dashboard/Content';
+import type { MenuItem, StatsData, NewsData, UserProfile } from '../components/Dashboard/DashboardContext';
 
 // Avatar and icon images
 const imgAvatar = "https://www.figma.com/api/mcp/asset/a2b69740-e4f4-4b7a-9b57-0219ee1438e7";
