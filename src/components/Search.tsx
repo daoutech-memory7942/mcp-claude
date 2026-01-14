@@ -1,15 +1,19 @@
-import { useState } from 'react';
+import { useState, type ChangeEvent } from 'react';
 
 type SearchProps = {
   state?: 'normal' | 'hover';
   placeholder?: string;
   className?: string;
+  value?: string;
+  onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
 };
 
 export default function Search({
   state,
   placeholder = '검색어를 입력해주세요.',
-  className = ''
+  className = '',
+  value,
+  onChange
 }: SearchProps) {
   const [isHovered, setIsHovered] = useState(false);
 
@@ -62,7 +66,11 @@ export default function Search({
           />
         </svg>
       </div>
-      <p
+      <input
+        type="text"
+        value={value}
+        onChange={onChange}
+        placeholder={placeholder}
         className={`
           flex-1
           font-["Pretendard",sans-serif]
@@ -73,12 +81,14 @@ export default function Search({
           relative
           shrink-0
           text-sm
-          text-[var(--color-text-neutral-disabled)]
+          bg-transparent
+          border-none
+          outline-none
+          text-black
+          placeholder:text-[var(--color-text-neutral-disabled)]
           whitespace-nowrap
         `}
-      >
-        {placeholder}
-      </p>
+      />
     </div>
   );
 }
