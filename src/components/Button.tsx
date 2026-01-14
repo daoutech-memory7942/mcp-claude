@@ -54,7 +54,7 @@ export default function Button({
       return 'text-light-primary-500';
     }
 
-    return 'text-[#2f353c]';
+    return 'text-[#2f353c]'; // text-neutral-base
   };
 
   return (
@@ -63,7 +63,6 @@ export default function Button({
         flex items-center justify-center
         h-8
         px-3
-        rounded-md
         font-['Pretendard:Medium',sans-serif] text-sm
         leading-[1.6]
         transition-colors
