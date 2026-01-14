@@ -75,9 +75,8 @@ interface StatsBoxProps {
 
 function StatsBox({ count, label }: StatsBoxProps) {
   return (
-    <div className="bg-white flex-1 flex flex-col overflow-clip rounded-xl">
-      <div className="flex gap-2 items-center overflow-clip px-5 py-6">
-        <div className="bg-light-gray-100 rounded-md shrink-0 size-12" />
+    <div className="bg-white flex-1 flex flex-col overflow-clip">
+      <div className="flex items-center justify-between overflow-clip px-5 py-6">
         <div className="flex flex-col justify-center leading-[1.5] text-black whitespace-pre-wrap">
           <p className="font-['Pretendard:Bold',sans-serif] text-lg w-48">
             {count}
@@ -86,6 +85,7 @@ function StatsBox({ count, label }: StatsBoxProps) {
             {label}
           </p>
         </div>
+        <div className="bg-[#e7edf4] rounded-md shrink-0 size-12" />
       </div>
       <div className="border-t border-[#e4e6ec] flex items-center justify-between overflow-clip pl-5 pr-3 py-2.5">
         <p className="font-['Pretendard:Regular',sans-serif] leading-[1.5] text-[13px] text-black">
@@ -133,7 +133,7 @@ interface NewsCardProps {
 
 function NewsCard({ title, description, image }: NewsCardProps) {
   return (
-    <div className="bg-white flex-1 flex flex-col h-[280px] overflow-clip rounded-xl">
+    <div className="bg-white flex-1 flex flex-col h-[280px] overflow-clip">
       <div className="bg-[#f2f5f7] flex items-center justify-center overflow-clip px-5 py-10">
         <div className="size-[52px]">
           <img alt="" className="block max-w-none size-full" src={image || imgPhoto} />
