@@ -33,17 +33,17 @@ export default function Radio({
           checked
             ? disabled
               ? "bg-control-bg-disabled-checked"
-              : "bg-control-bg-normal border-[1.5px] border-control-border-primary"
+              : "bg-control-bg-normal border border-control-border-primary"
             : disabled
               ? "bg-control-bg-disabled border border-control-border-level1-hover"
               : "bg-control-bg-normal border border-control-border-level1 hover:border-control-border-level1-hover"
         }`}
       >
         {checked && !disabled && (
-          <div className="w-[6px] h-[6px] rounded-full bg-control-bg-primary" />
+          <div className="w-2 h-2 rounded-full bg-control-bg-primary" />
         )}
         {checked && disabled && (
-          <div className="w-[6px] h-[6px] rounded-full bg-white" />
+          <div className="w-2 h-2 rounded-full bg-white" />
         )}
       </div>
       {label && (
