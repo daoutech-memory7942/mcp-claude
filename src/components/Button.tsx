@@ -12,13 +12,13 @@ export default function Button({
   className = "",
 }: ButtonProps) {
   const baseStyles =
-    "inline-flex items-center justify-center h-h-5 px-p-5 font-pretendard text-typo-body-medium-bold rounded-medium transition-colors";
+    "inline-flex items-center justify-center h-h-5 px-p-5 py-0 font-pretendard text-typo-body-medium-bold transition-colors";
 
   const typeStyles = {
     primary:
       "bg-btn-bg-primary-base hover:bg-btn-bg-primary-hover text-btn-text-white",
     secondary:
-      "bg-btn-bg-normal-base hover:bg-btn-bg-normal-hover border border-btn-border-primary text-btn-text-primary",
+      "bg-btn-bg-normal-base hover:bg-bg-neutral-surface-hover border border-btn-border-primary text-btn-text-primary",
     normal:
       "bg-btn-bg-normal-base hover:bg-btn-bg-normal-hover border border-btn-border-normal text-btn-text-normal",
     ghost:
