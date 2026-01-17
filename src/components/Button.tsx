@@ -12,7 +12,7 @@ export default function Button({
   className = "",
 }: ButtonProps) {
   const baseStyles =
-    "inline-flex items-center justify-center h-h-5 px-p-5 py-0 font-pretendard text-typo-body-medium-bold transition-colors";
+    "inline-flex items-center justify-center h-h-5 px-p-5 font-pretendard text-typo-body-medium-bold rounded-medium overflow-clip transition-colors";
 
   const typeStyles = {
     primary:
