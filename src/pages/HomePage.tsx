@@ -1,7 +1,6 @@
 import { useState } from "react";
 import reactLogo from "../assets/react.svg";
 import viteLogo from "/vite.svg";
-import { Button } from "../components";
 import { Link } from "react-router-dom";
 
 export default function HomePage() {
@@ -32,11 +31,17 @@ export default function HomePage() {
 
       <div className="bg-bg-neutral-surface rounded-large shadow-xl p-8 mb-6">
         <div className="flex flex-wrap justify-center gap-4 mb-6">
-          <Button type="primary" onClick={() => setCount((c) => c + 1)}>
+          <button
+            className="px-4 py-2 bg-bg-primary-base text-text-on-color rounded-medium hover:bg-bg-primary-hover transition-colors"
+            onClick={() => setCount((c) => c + 1)}
+          >
             Count: {count}
-          </Button>
-          <Link to="/component">
-            <Button type="secondary">View Components</Button>
+          </button>
+          <Link
+            to="/component"
+            className="px-4 py-2 bg-bg-neutral-level1 text-text-neutral-base rounded-medium hover:bg-bg-neutral-level2 transition-colors"
+          >
+            View Components
           </Link>
         </div>
 
