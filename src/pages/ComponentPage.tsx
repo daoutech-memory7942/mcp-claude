@@ -3,6 +3,7 @@ import { Button, Toggle, Input, Select, Checkbox, Radio, Search, Dropdown, Toast
 import { Link } from "react-router-dom";
 
 export default function ComponentPage() {
+  const [darkMode, setDarkMode] = useState(false);
   const [toggle1, setToggle1] = useState(false);
   const [toggle2, setToggle2] = useState(true);
   const [inputValue, setInputValue] = useState("");
@@ -13,15 +14,89 @@ export default function ComponentPage() {
   const [searchValue, setSearchValue] = useState("");
   const [dropdownValue, setDropdownValue] = useState<string[]>(["customer", "task"]);
 
+  // Form Demo States
+  const [formName, setFormName] = useState("");
+  const [formEmail, setFormEmail] = useState("");
+  const [formCategory, setFormCategory] = useState("");
+  const [formAgree, setFormAgree] = useState(false);
+  const [formGender, setFormGender] = useState("");
+  const [formSubmitting, setFormSubmitting] = useState(false);
+  const [formResult, setFormResult] = useState<{ success: boolean; message: string } | null>(null);
+
+  const handleDarkModeToggle = (checked: boolean) => {
+    setDarkMode(checked);
+    if (checked) {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  };
+
+  const handleFormSubmit = async () => {
+    // Validation
+    if (!formName.trim()) {
+      setFormResult({ success: false, message: "이름을 입력해주세요." });
+      return;
+    }
+    if (!formEmail.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formEmail)) {
+      setFormResult({ success: false, message: "올바른 이메일을 입력해주세요." });
+      return;
+    }
+    if (!formCategory) {
+      setFormResult({ success: false, message: "카테고리를 선택해주세요." });
+      return;
+    }
+    if (!formGender) {
+      setFormResult({ success: false, message: "성별을 선택해주세요." });
+      return;
+    }
+    if (!formAgree) {
+      setFormResult({ success: false, message: "이용약관에 동의해주세요." });
+      return;
+    }
+
+    setFormSubmitting(true);
+    setFormResult(null);
+
+    // Simulate API call
+    await new Promise((resolve) => setTimeout(resolve, 1500));
+
+    setFormSubmitting(false);
+    setFormResult({ success: true, message: "폼이 성공적으로 제출되었습니다!" });
+
+    // Reset form
+    setFormName("");
+    setFormEmail("");
+    setFormCategory("");
+    setFormAgree(false);
+    setFormGender("");
+  };
+
+  const handleFormReset = () => {
+    setFormName("");
+    setFormEmail("");
+    setFormCategory("");
+    setFormAgree(false);
+    setFormGender("");
+    setFormResult(null);
+  };
+
   return (
     <div className="max-w-4xl w-full">
       <div className="flex items-center justify-between mb-8">
         <h1 className="font-pretendard text-typo-heading-xlarge text-text-neutral-base">
           Components
         </h1>
-        <Link to="/">
-          <Button type="ghost">Back to Home</Button>
-        </Link>
+        <div className="flex items-center gap-4">
+          <Toggle
+            label="Dark Mode"
+            checked={darkMode}
+            onChange={handleDarkModeToggle}
+          />
+          <Link to="/">
+            <Button type="ghost">Back to Home</Button>
+          </Link>
+        </div>
       </div>
 
       {/* Button Section */}
@@ -466,6 +541,153 @@ export default function ComponentPage() {
           <pre className="font-mono text-typo-body-small-regular text-text-neutral-base overflow-x-auto">
 {`<Toast type="success" message="성공 메시지" />
 <Toast type="error" message="에러 메시지" />`}
+          </pre>
+        </div>
+      </section>
+
+      {/* Form Demo Section */}
+      <section className="bg-bg-neutral-surface rounded-large shadow-xl p-8 mb-6">
+        <h2 className="font-pretendard text-typo-heading-large text-text-neutral-base mb-6">
+          Form Demo (유효성 검사 & 이벤트 핸들링)
+        </h2>
+
+        <div className="space-y-6">
+          {/* Form Result Toast */}
+          {formResult && (
+            <Toast
+              type={formResult.success ? "success" : "error"}
+              message={formResult.message}
+            />
+          )}
+
+          {/* Name Input */}
+          <div>
+            <label className="block font-pretendard text-typo-body-medium-regular text-text-neutral-base mb-2">
+              이름 <span className="text-input-text-error">*</span>
+            </label>
+            <div className="max-w-[300px]">
+              <Input
+                value={formName}
+                onChange={setFormName}
+                placeholder="이름을 입력해주세요"
+                required
+                minLength={2}
+              />
+            </div>
+          </div>
+
+          {/* Email Input */}
+          <div>
+            <label className="block font-pretendard text-typo-body-medium-regular text-text-neutral-base mb-2">
+              이메일 <span className="text-input-text-error">*</span>
+            </label>
+            <div className="max-w-[300px]">
+              <Input
+                type="email"
+                value={formEmail}
+                onChange={setFormEmail}
+                placeholder="이메일을 입력해주세요"
+                required
+              />
+            </div>
+          </div>
+
+          {/* Category Select */}
+          <div>
+            <label className="block font-pretendard text-typo-body-medium-regular text-text-neutral-base mb-2">
+              카테고리 <span className="text-input-text-error">*</span>
+            </label>
+            <div className="max-w-[300px]">
+              <Select
+                options={[
+                  { value: "general", label: "일반 문의" },
+                  { value: "technical", label: "기술 지원" },
+                  { value: "billing", label: "결제 문의" },
+                  { value: "other", label: "기타" },
+                ]}
+                value={formCategory}
+                onChange={setFormCategory}
+                placeholder="카테고리를 선택해주세요"
+                required
+              />
+            </div>
+          </div>
+
+          {/* Gender Radio */}
+          <div>
+            <label className="block font-pretendard text-typo-body-medium-regular text-text-neutral-base mb-2">
+              성별 <span className="text-input-text-error">*</span>
+            </label>
+            <div className="flex gap-6">
+              <Radio
+                label="남성"
+                checked={formGender === "male"}
+                onChange={() => setFormGender("male")}
+                name="form-gender"
+              />
+              <Radio
+                label="여성"
+                checked={formGender === "female"}
+                onChange={() => setFormGender("female")}
+                name="form-gender"
+              />
+              <Radio
+                label="기타"
+                checked={formGender === "other"}
+                onChange={() => setFormGender("other")}
+                name="form-gender"
+              />
+            </div>
+          </div>
+
+          {/* Agreement Checkbox */}
+          <div>
+            <Checkbox
+              label="이용약관에 동의합니다"
+              checked={formAgree}
+              onChange={setFormAgree}
+              required
+              error={!formAgree && formResult?.success === false}
+              errorMessage="이용약관에 동의해주세요."
+            />
+          </div>
+
+          {/* Submit Buttons */}
+          <div className="flex gap-4 pt-4">
+            <Button
+              type="primary"
+              onClick={handleFormSubmit}
+              loading={formSubmitting}
+            >
+              제출하기
+            </Button>
+            <Button
+              type="normal"
+              onClick={handleFormReset}
+              disabled={formSubmitting}
+            >
+              초기화
+            </Button>
+          </div>
+        </div>
+
+        {/* Usage Code */}
+        <div className="mt-8 p-4 bg-bg-neutral-level1 rounded-medium">
+          <p className="font-pretendard text-typo-body-small-regular text-text-neutral-description mb-2">
+            주요 기능:
+          </p>
+          <pre className="font-mono text-typo-body-small-regular text-text-neutral-base overflow-x-auto">
+{`// Input 유효성 검사
+<Input required minLength={2} type="email" />
+
+// Select 필수 선택
+<Select required requiredMessage="카테고리를 선택해주세요" />
+
+// Checkbox 필수 동의
+<Checkbox required error={!agreed} errorMessage="동의가 필요합니다" />
+
+// Button 로딩 상태 & 비동기 처리
+<Button loading={isLoading} onClick={async () => { ... }} />`}
           </pre>
         </div>
       </section>
