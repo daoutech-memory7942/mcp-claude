@@ -19,9 +19,8 @@ interface NewsCard {
 // 통계 카드 컴포넌트
 function StatCardComponent({ value, label }: StatCard) {
   return (
-    <div className="flex-1 bg-bg-neutral-base rounded-xlarge overflow-hidden">
+    <div className="flex-1 bg-bg-neutral-base rounded-small overflow-hidden">
       <div className="flex items-center gap-p-5 px-p-7 py-p-8">
-        <div className="w-h-7 h-h-7 bg-bg-neutral-level1 rounded-medium" />
         <div className="flex flex-col flex-1">
           <p className="font-pretendard text-typo-heading-medium text-text-neutral-base">
             {value}
@@ -30,8 +29,9 @@ function StatCardComponent({ value, label }: StatCard) {
             {label}
           </p>
         </div>
+        <div className="w-h-7 h-h-7 bg-bg-neutral-level1 rounded-medium shrink-0" />
       </div>
-      <div className="flex items-center justify-between border-t border-border-neutral-level1 px-p-7 pr-p-5 py-g-5">
+      <div className="flex items-center justify-between border-t border-border-neutral-level1 pl-p-7 pr-p-5 py-g-5">
         <span className="font-pretendard text-typo-body-small-regular text-text-neutral-base">
           See detail
         </span>
@@ -44,15 +44,15 @@ function StatCardComponent({ value, label }: StatCard) {
 // 뉴스 카드 컴포넌트
 function NewsCardComponent({ title, description }: NewsCard) {
   return (
-    <div className="flex-1 min-w-[200px] h-[280px] bg-bg-neutral-base rounded-xlarge overflow-hidden flex flex-col">
-      <div className="flex items-center justify-center bg-bg-neutral-level1 px-p-7 py-h-6">
+    <div className="flex-1 min-w-[200px] h-[280px] bg-bg-neutral-base rounded-small overflow-hidden flex flex-col">
+      <div className="flex items-center justify-center bg-[#f2f5f7] px-p-7 py-h-6">
         <img src={imgPhoto} alt="" className="w-[52px] h-[52px]" />
       </div>
-      <div className="flex-1 flex flex-col gap-g-5 border-t border-border-neutral-level1 px-p-7 pr-p-5 py-g-5 overflow-hidden">
+      <div className="flex-1 flex flex-col gap-g-5 border-t border-[#e4e6ec] pl-p-7 pr-p-5 py-g-5 overflow-hidden">
         <p className="font-pretendard text-typo-heading-medium text-text-neutral-base">
           {title}
         </p>
-        <p className="flex-1 font-pretendard text-typo-body-small-regular text-text-neutral-base overflow-hidden text-ellipsis">
+        <p className="flex-1 font-pretendard text-[13px] leading-[1.5] text-text-neutral-base overflow-hidden text-ellipsis">
           {description}
         </p>
       </div>
