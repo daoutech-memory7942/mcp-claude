@@ -2,31 +2,33 @@ import { createContext, useContext, useState, ReactNode } from "react";
 import { Link, useLocation } from "react-router-dom";
 import Search from "./Search";
 import Button from "./Button";
+import {
+  SmartHomeIcon,
+  FolderIcon,
+  LayoutGridIcon,
+  ChartBarIcon,
+  MailIcon,
+} from "./icons";
 
-// Figma 에셋 이미지 URLs
+// Figma 에셋 이미지 URLs (로고, 아바타만 유지)
 const imgAvatar = "https://www.figma.com/api/mcp/asset/6fdf0702-06a5-4a86-bee8-a70ff45975f0";
 const imgLogo1 = "https://www.figma.com/api/mcp/asset/6c7f589d-f3a4-4f4a-943f-89ee27c325a7";
 const imgLogo2 = "https://www.figma.com/api/mcp/asset/13ba5a77-b054-4570-8f72-ead970bff434";
-const imgSmartHome = "https://www.figma.com/api/mcp/asset/6733a6f5-b3e9-4c66-bdbc-e23d7b830c92";
-const imgFolder = "https://www.figma.com/api/mcp/asset/a2f6873a-e029-419d-975a-d514c29e4f48";
-const imgLayoutGrid = "https://www.figma.com/api/mcp/asset/82a96b86-66fb-43bc-a0bc-e923e6dff3be";
-const imgChartBar = "https://www.figma.com/api/mcp/asset/f44d644c-494b-46f0-8e48-b90e576ce603";
-const imgMail = "https://www.figma.com/api/mcp/asset/b0154693-07b4-4588-8216-6abe1bc15412";
 
 // 메뉴 아이템 타입
 interface MenuItem {
-  icon: string;
+  icon: React.ComponentType<{ className?: string; size?: number; color?: string }>;
   label: string;
   path: string;
 }
 
 // 기본 메뉴 아이템
 const defaultMenuItems: MenuItem[] = [
-  { icon: imgSmartHome, label: "홈", path: "/dashboard" },
-  { icon: imgFolder, label: "드라이브", path: "/drive" },
-  { icon: imgLayoutGrid, label: "Works", path: "/works" },
-  { icon: imgChartBar, label: "설문", path: "/survey" },
-  { icon: imgMail, label: "메일", path: "/mail" },
+  { icon: SmartHomeIcon, label: "홈", path: "/dashboard" },
+  { icon: FolderIcon, label: "드라이브", path: "/drive" },
+  { icon: LayoutGridIcon, label: "Works", path: "/works" },
+  { icon: ChartBarIcon, label: "설문", path: "/survey" },
+  { icon: MailIcon, label: "메일", path: "/mail" },
 ];
 
 // Context 타입
@@ -47,7 +49,7 @@ function useDashboardLayout() {
 }
 
 // 사이드바 메뉴 아이템 컴포넌트
-function SidebarMenuItem({ icon, label, path, isActive }: MenuItem & { isActive: boolean }) {
+function SidebarMenuItem({ icon: Icon, label, path, isActive }: MenuItem & { isActive: boolean }) {
   return (
     <Link
       to={path}
@@ -55,7 +57,7 @@ function SidebarMenuItem({ icon, label, path, isActive }: MenuItem & { isActive:
         isActive ? "bg-[#0698ac]" : "hover:bg-[#0698ac]/70"
       }`}
     >
-      <img src={icon} alt="" className="w-6 h-6" />
+      <Icon size={24} color="white" />
       <span className="font-pretendard text-typo-body-medium-bold text-white">{label}</span>
     </Link>
   );

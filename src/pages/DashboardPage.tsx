@@ -1,8 +1,5 @@
 import DashboardLayout from "../components/DashboardLayout";
-
-// Figma 에셋 이미지 URLs
-const imgChevronRight = "https://www.figma.com/api/mcp/asset/39fde4aa-1bde-4c2a-a06f-df884031c2b4";
-const imgPhoto = "https://www.figma.com/api/mcp/asset/a39ae1ca-f240-4682-b500-b965e7d0abda";
+import { ChevronRightIcon, PhotoIcon } from "../components/icons";
 
 // 통계 카드 타입
 interface StatCard {
@@ -35,7 +32,7 @@ function StatCardComponent({ value, label }: StatCard) {
         <span className="font-pretendard text-typo-body-small-regular text-text-neutral-base">
           See detail
         </span>
-        <img src={imgChevronRight} alt="" className="w-4 h-4" />
+        <ChevronRightIcon size={16} color="#354052" />
       </div>
     </div>
   );
@@ -46,7 +43,7 @@ function NewsCardComponent({ title, description }: NewsCard) {
   return (
     <div className="flex-1 min-w-[200px] h-[280px] bg-bg-neutral-base rounded-small overflow-hidden flex flex-col">
       <div className="flex items-center justify-center bg-[#f2f5f7] px-p-7 py-h-6">
-        <img src={imgPhoto} alt="" className="w-[52px] h-[52px]" />
+        <PhotoIcon size={52} color="#9ca3af" />
       </div>
       <div className="flex-1 flex flex-col gap-g-5 border-t border-[#e4e6ec] pl-p-7 pr-p-5 py-g-5 overflow-hidden">
         <p className="font-pretendard text-typo-heading-medium text-text-neutral-base">
