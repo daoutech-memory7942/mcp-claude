@@ -22,6 +22,7 @@ export default function CheckoutPage() {
   const [phone2, setPhone2] = useState("");
   const [phone3, setPhone3] = useState("");
   const [signupChannel, setSignupChannel] = useState("");
+  const [test2Name, setTest2Name] = useState("");
 
   const regionOptions = [
     { value: "seoul", label: "서울" },
@@ -172,6 +173,28 @@ export default function CheckoutPage() {
                     value={signupChannel}
                     onChange={setSignupChannel}
                     className="w-60"
+                  />
+                </div>
+              </DashboardLayout.CardContent>
+            </DashboardLayout.Card>
+          </DashboardLayout.Section>
+
+          {/* test2 섹션 */}
+          <DashboardLayout.Section>
+            <DashboardLayout.Card>
+              <DashboardLayout.CardTitle>test2</DashboardLayout.CardTitle>
+              <DashboardLayout.CardContent>
+                {/* 이름 */}
+                <div className="flex items-center gap-2">
+                  <div className="w-[120px] h-8 flex items-center shrink-0">
+                    <label className="font-pretendard text-typo-body-medium-bold text-black">
+                      이름
+                    </label>
+                  </div>
+                  <Input
+                    value={test2Name}
+                    onChange={setTest2Name}
+                    className="flex-1"
                   />
                 </div>
               </DashboardLayout.CardContent>
